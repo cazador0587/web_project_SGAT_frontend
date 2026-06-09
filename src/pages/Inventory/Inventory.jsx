@@ -76,46 +76,41 @@ function Inventory() {
         />
         
         <button className="inventory__search-btn">
-          <FaSearch />Buscar
+          <FaSearch /> Buscar
         </button>
 
         <button className="inventory__add-btn">
-          <FaPlus />
-          Registrar
+          <FaPlus /> Registrar
         </button>
       </div>
 
-  <div className="inventory__table">
+      <div className="inventory__table">
+        <div className="inventory__header">
+          <span>Equipo</span>
+          <span>Marca</span>
+          <span>Modelo</span>
+          <span>Serie</span>
+          <span>Ubicación</span>
+          <span>Estado</span>
+          <span>Acciones</span>
+        </div>
 
-    <div className="inventory__header">
-      <span>Equipo</span>
-      <span>Marca</span>
-      <span>Modelo</span>
-      <span>Serie</span>
-      <span>Ubicación</span>
-      <span>Estado</span>
-      <span>Acciones</span>
-    </div>
-
-    {equipments.map((equipment) => (
-      <div
-        key={equipment.id}
-        className="inventory__row"
-      >
-        <span>{equipment.name}</span>
-        <span>{equipment.brand}</span>
-        <span>{equipment.model}</span>
-        <span>{equipment.serial}</span>
-        <span>{equipment.location}</span>
-
-        <span
-          className={`inventory__status inventory__status_${equipment.status}`}
-        >
+        {equipments.map((equipment) => (
+          <div
+            key={equipment.id}
+            className="inventory__row"
+          >
+          <span>{equipment.name}</span>
+          <span>{equipment.brand}</span>
+          <span>{equipment.model}</span>
+          <span>{equipment.serial}</span>
+          <span>{equipment.location}</span>
+          <span className={`inventory__status inventory__status_${equipment.status}`}
+          >
           {equipment.status}
         </span>
 
         <div className="inventory__actions">
-
           <button className="inventory__edit-btn">
             <FaEdit />
           </button>
@@ -123,7 +118,6 @@ function Inventory() {
           <button className="inventory__delete-btn">
             <FaTrash />
           </button>
-
         </div>
       </div>
     ))}
