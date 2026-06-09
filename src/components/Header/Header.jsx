@@ -1,7 +1,11 @@
+import "./Header.css";
+
 function Header() {
   return (
-    <header>
-      <h1>SGAT</h1>
+    <header className="header">
+      <div className="header__logo">SGAT</div>
+
+      <div className="header__user">Administrador</div>
     </header>
   );
 }

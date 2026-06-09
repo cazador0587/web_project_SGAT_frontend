@@ -1,7 +1,9 @@
+import "./Footer.css";
+
 function Footer() {
   return (
-    <footer>
-      <p>&copy; 2026 SGAT. All rights reserved.</p>
+    <footer className="footer">
+      <p>© 2026 SGAT | Fernando Salvador</p>
     </footer>
   );
 }
