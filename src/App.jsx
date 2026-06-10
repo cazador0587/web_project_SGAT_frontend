@@ -10,6 +10,7 @@ import RegisterEquipment from "./pages/RegisterEquipment/RegisterEquipment";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
 import EquipmentDetail from "./pages/EquipmentDetail/EquipmentDetail";
+import EditEquipment from "./pages/EditEquipment/EditEquipment";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/equipment/:id" element={<EquipmentDetail />} />
+          <Route path="/equipment/:id/edit" element={<EditEquipment />} />
         </Routes>
       </main>
       <Footer />

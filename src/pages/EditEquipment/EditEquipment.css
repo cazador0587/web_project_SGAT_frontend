@@ -1,0 +1,44 @@
+.edit-equipment {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+.edit-equipment__card {
+  background: #1e293b;
+  padding: 40px;
+  border-radius: 16px;
+}
+
+.edit-equipment__title {
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.edit-equipment__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.edit-equipment__form input,
+.edit-equipment__form select {
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+}
+
+.edit-equipment__button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.edit-equipment__button:hover {
+  background: #1d4ed8;
+}

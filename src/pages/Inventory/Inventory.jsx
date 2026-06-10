@@ -114,9 +114,12 @@ function Inventory() {
             </span>
 
             <div className="inventory__actions">
-              <button className="inventory__edit-btn">
+              <Link
+                to={`/edit-equipment/${equipment.id}`}
+                className="inventory__edit-btn"
+              >
                 <FaEdit />
-              </button>
+              </Link>
 
               <button className="inventory__delete-btn">
                 <FaTrash />

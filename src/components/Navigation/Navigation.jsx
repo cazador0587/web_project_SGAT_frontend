@@ -10,6 +10,7 @@ function Navigation() {
       <Link to="/profile">Perfil</Link>
       <Link to="/register-equipment">Registrar Equipo</Link>
       <Link to="/equipment/:id">Detalles del Equipo</Link>
+      <Link to="/equipment/:id/edit">Editar Equipo</Link>
     </nav>
   );
 }
