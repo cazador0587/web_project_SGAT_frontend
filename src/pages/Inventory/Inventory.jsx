@@ -1,46 +1,63 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Inventory.css";
 import { FaPlus, FaEdit, FaTrash, FaSearch } from "react-icons/fa";
 
+const initialEquipments = [
+  {
+    id: 1,
+    name: "Latitude 5420",
+    brand: "Dell",
+    model: "5420",
+    serial: "DL-5420-001",
+    location: "Sistemas",
+    status: "activo",
+  },
+  {
+    id: 2,
+    name: "EliteBook 840",
+    brand: "HP",
+    model: "840 G8",
+    serial: "HP-840-002",
+    location: "Finanzas",
+    status: "reparacion",
+  },
+  {
+    id: 3,
+    name: "ThinkPad T14",
+    brand: "Lenovo",
+    model: "T14",
+    serial: "LN-T14-003",
+    location: "Recursos Humanos",
+    status: "activo",
+  },
+  {
+    id: 4,
+    name: "MacBook Air",
+    brand: "Apple",
+    model: "M2",
+    serial: "MBA-M2-004",
+    location: "Dirección",
+    status: "baja",
+  },
+];
+
 function Inventory() {
-  const equipments = [
-    {
-      id: 1,
-      name: "Latitude 5420",
-      brand: "Dell",
-      model: "5420",
-      serial: "DL-5420-001",
-      location: "Sistemas",
-      status: "activo",
-    },
-    {
-      id: 2,
-      name: "EliteBook 840",
-      brand: "HP",
-      model: "840 G8",
-      serial: "HP-840-002",
-      location: "Finanzas",
-      status: "reparacion",
-    },
-    {
-      id: 3,
-      name: "ThinkPad T14",
-      brand: "Lenovo",
-      model: "T14",
-      serial: "LN-T14-003",
-      location: "Recursos Humanos",
-      status: "activo",
-    },
-    {
-      id: 4,
-      name: "MacBook Air",
-      brand: "Apple",
-      model: "M2",
-      serial: "MBA-M2-004",
-      location: "Dirección",
-      status: "baja",
-    },
-  ];
+   const [equipments, setEquipments] = useState(initialEquipments);
+
+  const handleDeleteEquipment = (equipmentId) => {
+    const confirmDelete = window.confirm(
+      "¿Estás seguro de que deseas eliminar este equipo?"
+    );
+
+    if (!confirmDelete) {
+      return;
+    }
+
+    setEquipments((currentEquipments) =>
+      currentEquipments.filter((equipment) => equipment.id !== equipmentId)
+    );
+  };
 
   return (
     <section className="inventory">
@@ -121,7 +138,11 @@ function Inventory() {
                 <FaEdit />
               </Link>
 
-              <button className="inventory__delete-btn">
+              <button
+                className="inventory__delete-btn"
+                type="button"
+                onClick={() => handleDeleteEquipment(equipment.id)}
+              >
                 <FaTrash />
               </button>
             </div>
