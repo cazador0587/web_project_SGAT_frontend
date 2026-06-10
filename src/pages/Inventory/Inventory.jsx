@@ -2,45 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Inventory.css";
 import { FaPlus, FaEdit, FaTrash, FaSearch } from "react-icons/fa";
-
-const initialEquipments = [
-  {
-    id: 1,
-    name: "Latitude 5420",
-    brand: "Dell",
-    model: "5420",
-    serial: "DL-5420-001",
-    location: "Sistemas",
-    status: "activo",
-  },
-  {
-    id: 2,
-    name: "EliteBook 840",
-    brand: "HP",
-    model: "840 G8",
-    serial: "HP-840-002",
-    location: "Finanzas",
-    status: "reparacion",
-  },
-  {
-    id: 3,
-    name: "ThinkPad T14",
-    brand: "Lenovo",
-    model: "T14",
-    serial: "LN-T14-003",
-    location: "Recursos Humanos",
-    status: "activo",
-  },
-  {
-    id: 4,
-    name: "MacBook Air",
-    brand: "Apple",
-    model: "M2",
-    serial: "MBA-M2-004",
-    location: "Dirección",
-    status: "baja",
-  },
-];
+import { initialEquipments } from "../../data/equipments";
 
 function Inventory() {
   const [equipments, setEquipments] = useState(initialEquipments);
@@ -67,7 +29,8 @@ function Inventory() {
       equipment.model.toLowerCase().includes(searchText) ||
       equipment.serial.toLowerCase().includes(searchText) ||
       equipment.location.toLowerCase().includes(searchText) ||
-      equipment.status.toLowerCase().includes(searchText)
+      equipment.status.toLowerCase().includes(searchText) ||
+      equipment.responsible.toLowerCase().includes(searchText)
     );
   });
 
