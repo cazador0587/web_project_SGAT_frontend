@@ -1,0 +1,90 @@
+.register-equipment {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.register-equipment__container {
+  background: #1e293b;
+  padding: 40px;
+  border-radius: 16px;
+}
+
+.register-equipment__title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.register-equipment__form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.register-equipment__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.register-equipment__group label {
+  color: white;
+  font-weight: 600;
+}
+
+.register-equipment__group input,
+.register-equipment__group select,
+.register-equipment__group textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+.register-equipment__group textarea {
+  resize: none;
+}
+
+.register-equipment__group:last-of-type {
+  grid-column: span 2;
+}
+
+.register-equipment__actions {
+  grid-column: span 2;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+.register-equipment__save {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.register-equipment__cancel {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+
+  .register-equipment__form {
+    grid-template-columns: 1fr;
+  }
+
+  .register-equipment__group:last-of-type,
+  .register-equipment__actions {
+    grid-column: span 1;
+  }
+}

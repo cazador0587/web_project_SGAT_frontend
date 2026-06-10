@@ -1,16 +1,18 @@
+import { Link } from "react-router-dom";
 import "./Inventory.css";
 import { FaPlus, FaEdit, FaTrash, FaSearch } from "react-icons/fa";
 
 function Inventory() {
-  const equipments = [{
-    id: 1,
-    name: "Latitude 5420",
-    brand: "Dell",
-    model: "5420",
-    serial: "DL-5420-001",
-    location: "Sistemas",
-    status: "activo",
-  },
+  const equipments = [
+    {
+      id: 1,
+      name: "Latitude 5420",
+      brand: "Dell",
+      model: "5420",
+      serial: "DL-5420-001",
+      location: "Sistemas",
+      status: "activo",
+    },
     {
       id: 2,
       name: "EliteBook 840",
@@ -42,9 +44,7 @@ function Inventory() {
 
   return (
     <section className="inventory">
-      <h2 className="inventory__title">
-        Inventario de Equipos
-      </h2>
+      <h2 className="inventory__title">Inventario de Equipos</h2>
 
       <div className="inventory__summary">
         <div className="inventory__summary-card">
@@ -74,14 +74,17 @@ function Inventory() {
           type="text"
           placeholder="Buscar equipo..."
         />
-        
+
         <button className="inventory__search-btn">
           <FaSearch /> Buscar
         </button>
 
-        <button className="inventory__add-btn">
+        <Link
+          to="/register-equipment"
+          className="inventory__add-btn"
+        >
           <FaPlus /> Registrar
-        </button>
+        </Link>
       </div>
 
       <div className="inventory__table">
@@ -96,34 +99,32 @@ function Inventory() {
         </div>
 
         {equipments.map((equipment) => (
-          <div
-            key={equipment.id}
-            className="inventory__row"
-          >
-          <span>{equipment.name}</span>
-          <span>{equipment.brand}</span>
-          <span>{equipment.model}</span>
-          <span>{equipment.serial}</span>
-          <span>{equipment.location}</span>
-          <span className={`inventory__status inventory__status_${equipment.status}`}
-          >
-          {equipment.status}
-        </span>
+          <div key={equipment.id} className="inventory__row">
+            <span>{equipment.name}</span>
+            <span>{equipment.brand}</span>
+            <span>{equipment.model}</span>
+            <span>{equipment.serial}</span>
+            <span>{equipment.location}</span>
+            <span
+              className={`inventory__status inventory__status_${equipment.status}`}
+            >
+              {equipment.status}
+            </span>
 
-        <div className="inventory__actions">
-          <button className="inventory__edit-btn">
-            <FaEdit />
-          </button>
+            <div className="inventory__actions">
+              <button className="inventory__edit-btn">
+                <FaEdit />
+              </button>
 
-          <button className="inventory__delete-btn">
-            <FaTrash />
-          </button>
-        </div>
+              <button className="inventory__delete-btn">
+                <FaTrash />
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
-</section>
-);
+    </section>
+  );
 }
 
 export default Inventory;
