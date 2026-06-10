@@ -115,7 +115,7 @@ function Inventory() {
 
             <div className="inventory__actions">
               <Link
-                to={`/edit-equipment/${equipment.id}`}
+                to={`/equipment/${equipment.id}/edit`}
                 className="inventory__edit-btn"
               >
                 <FaEdit />
