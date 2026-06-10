@@ -184,3 +184,87 @@
     align-items: flex-start;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .inventory {
+    padding: 32px 16px;
+  }
+
+  .inventory__title {
+    font-size: 24px;
+    margin-bottom: 28px;
+  }
+
+  .inventory__summary {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .inventory__summary-card {
+    padding: 20px;
+  }
+
+  .inventory__table {
+    background: transparent;
+    border-radius: 0;
+  }
+
+  .inventory__row {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    padding: 18px;
+  }
+
+  .inventory__equipment-link {
+    font-size: 18px;
+    font-weight: 700;
+    color: #93c5fd;
+  }
+
+  .inventory__actions {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  .inventory__edit-btn,
+  .inventory__delete-btn {
+    min-width: 44px;
+    min-height: 40px;
+    justify-content: center;
+  }
+
+  .navigation {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 12px 16px;
+    gap: 14px;
+  }
+
+  .navigation a {
+    font-size: 13px;
+  }
+
+  .navigation a[href*="equipment"],
+  .navigation a[href*="edit"] {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .inventory__toolbar {
+    gap: 10px;
+  }
+
+  .inventory__search-btn,
+  .inventory__add-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .inventory__summary-card h3 {
+    font-size: 30px;
+  }
+}
