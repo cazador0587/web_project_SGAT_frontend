@@ -1,40 +1,55 @@
+import { useParams } from "react-router-dom";
+import { initialEquipments } from "../../data/equipments";
 import "./EquipmentDetail.css";
 
 function EquipmentDetail() {
+  const { id } = useParams();
+  const equipment = initialEquipments.find(
+    (item) => item.id === Number(id)
+  );
+
+  if (!equipment) {
+    return (
+      <section className="equipment-detail">
+        <h2>Equipo no encontrado</h2>
+      </section>
+    );
+  }
+
   return (
     <section className="equipment-detail">
       <div className="equipment-detail__card">
-        <h2 className="equipment-detail__title">Dell Latitude 5420</h2>
+        <h2 className="equipment-detail__title">{equipment.name}</h2>
 
         <div className="equipment-detail__info">
           <div>
             <span>Marca</span>
-            <p>Dell</p>
+            <p>{equipment.brand}</p>
           </div>
 
           <div>
             <span>Modelo</span>
-            <p>5420</p>
+            <p>{equipment.model}</p>
           </div>
 
           <div>
             <span>No. Serie</span>
-            <p>DL-5420-001</p>
+            <p>{equipment.serial}</p>
           </div>
 
           <div>
             <span>Ubicación</span>
-            <p>Sistemas</p>
+            <p>{equipment.location}</p>
           </div>
 
           <div>
             <span>Estado</span>
-            <p>Activo</p>
+            <p>{equipment.status}</p>
           </div>
 
           <div>
             <span>Usuario asignado</span>
-            <p>Fernando Salvador</p>
+            <p>{equipment.responsible}</p>
           </div>
         </div>
       </div>
