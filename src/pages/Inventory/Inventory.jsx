@@ -43,21 +43,33 @@ const initialEquipments = [
 ];
 
 function Inventory() {
-   const [equipments, setEquipments] = useState(initialEquipments);
+  const [equipments, setEquipments] = useState(initialEquipments);
+  const [searchValue, setSearchValue] = useState("");
 
   const handleDeleteEquipment = (equipmentId) => {
     const confirmDelete = window.confirm(
-      "¿Estás seguro de que deseas eliminar este equipo?"
+      "¿Estás seguro de que deseas eliminar este equipo?",
     );
 
-    if (!confirmDelete) {
-      return;
-    }
+    if (!confirmDelete) return;
 
     setEquipments((currentEquipments) =>
-      currentEquipments.filter((equipment) => equipment.id !== equipmentId)
+      currentEquipments.filter((equipment) => equipment.id !== equipmentId),
     );
   };
+
+  const filteredEquipments = equipments.filter((equipment) => {
+    const searchText = searchValue.toLowerCase();
+
+    return (
+      equipment.name.toLowerCase().includes(searchText) ||
+      equipment.brand.toLowerCase().includes(searchText) ||
+      equipment.model.toLowerCase().includes(searchText) ||
+      equipment.serial.toLowerCase().includes(searchText) ||
+      equipment.location.toLowerCase().includes(searchText) ||
+      equipment.status.toLowerCase().includes(searchText)
+    );
+  });
 
   return (
     <section className="inventory">
@@ -90,9 +102,11 @@ function Inventory() {
           className="inventory__input"
           type="text"
           placeholder="Buscar equipo..."
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
         />
 
-        <button className="inventory__search-btn">
+        <button className="inventory__search-btn" type="button">
           <FaSearch /> Buscar
         </button>
 
@@ -112,7 +126,7 @@ function Inventory() {
           <span>Acciones</span>
         </div>
 
-        {equipments.map((equipment) => (
+        {filteredEquipments.map((equipment) => (
           <div key={equipment.id} className="inventory__row">
             <Link
               to={`/equipment/${equipment.id}`}
@@ -120,10 +134,12 @@ function Inventory() {
             >
               {equipment.name}
             </Link>
+
             <span>{equipment.brand}</span>
             <span>{equipment.model}</span>
             <span>{equipment.serial}</span>
             <span>{equipment.location}</span>
+
             <span
               className={`inventory__status inventory__status_${equipment.status}`}
             >
@@ -148,6 +164,10 @@ function Inventory() {
             </div>
           </div>
         ))}
+
+        {filteredEquipments.length === 0 && (
+          <p className="inventory__empty">No se encontraron equipos.</p>
+        )}
       </div>
     </section>
   );

@@ -153,6 +153,12 @@
   color: #f59e0b;
 }
 
+.inventory__empty {
+  padding: 24px;
+  text-align: center;
+  color: #94a3b8;
+}
+
 .inventory__status_baja {
    background: rgba(239, 68, 68, 0.15);
   color: #ef4444;
