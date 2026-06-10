@@ -13,14 +13,20 @@ body,
 body {
   font-family: "Inter", sans-serif;
   background: #0f172a;
-  color: #ffffff;
+  color: #f8fafc;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 button {
+  font-family: inherit;
   border: none;
   cursor: pointer;
+}
+
+input {
+  font-family: inherit;
 }

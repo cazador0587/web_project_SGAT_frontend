@@ -1,0 +1,40 @@
+.equipment-detail {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+.equipment-detail__card {
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 40px;
+}
+
+.equipment-detail__title {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.equipment-detail__info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.equipment-detail__info div {
+  background: #334155;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.equipment-detail__info span {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.equipment-detail__info p {
+  color: white;
+  margin-top: 8px;
+  font-weight: 600;
+}

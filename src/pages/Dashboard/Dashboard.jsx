@@ -1,7 +1,26 @@
-import "./Dashboard.css";
+
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getLaptops } from "../../services/dummyApi";
+import "./Dashboard.css";
 
 function Dashboard() {
+  const [laptops, setLaptops] = useState([]);
+
+  useEffect(() => {
+    async function loadLaptops() {
+      try {
+        const data = await getLaptops();
+
+        setLaptops(data.products.slice(0, 5));
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    loadLaptops();
+  }, []);
+
   return (
     <section className="dashboard">
       <div className="dashboard__hero">
@@ -48,22 +67,15 @@ function Dashboard() {
       </div>
 
       <div className="dashboard__recent">
-        <h3>Equipos recientes</h3>
+        <h3>Equipos obtenidos desde API</h3>
 
-        <div className="dashboard__equipment">
-          <p>Dell Latitude 5420</p>
-          <span>Activo</span>
-        </div>
+        {laptops.map((laptop) => (
+          <div key={laptop.id} className="dashboard__equipment">
+            <p>{laptop.title}</p>
 
-        <div className="dashboard__equipment">
-          <p>HP EliteBook 840</p>
-          <span>Reparación</span>
-        </div>
-
-        <div className="dashboard__equipment">
-          <p>Lenovo ThinkPad T14</p>
-          <span>Activo</span>
-        </div>
+            <span>{laptop.brand}</span>
+          </div>
+        ))}
       </div>
 
       <Link className="dashboard__button" to="/inventory">

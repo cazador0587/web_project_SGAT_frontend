@@ -79,10 +79,7 @@ function Inventory() {
           <FaSearch /> Buscar
         </button>
 
-        <Link
-          to="/register-equipment"
-          className="inventory__add-btn"
-        >
+        <Link to="/register-equipment" className="inventory__add-btn">
           <FaPlus /> Registrar
         </Link>
       </div>
@@ -100,7 +97,12 @@ function Inventory() {
 
         {equipments.map((equipment) => (
           <div key={equipment.id} className="inventory__row">
-            <span>{equipment.name}</span>
+            <Link
+              to={`/equipment/${equipment.id}`}
+              className="inventory__equipment-link"
+            >
+              {equipment.name}
+            </Link>
             <span>{equipment.brand}</span>
             <span>{equipment.model}</span>
             <span>{equipment.serial}</span>

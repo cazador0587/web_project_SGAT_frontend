@@ -9,6 +9,7 @@ import Inventory from "./pages/Inventory/Inventory";
 import RegisterEquipment from "./pages/RegisterEquipment/RegisterEquipment";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
+import EquipmentDetail from "./pages/EquipmentDetail/EquipmentDetail";
 
 function App() {
   return (
@@ -23,9 +24,9 @@ function App() {
           <Route path="/register-equipment" element={<RegisterEquipment />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/equipment/:id" element={<EquipmentDetail />} />
         </Routes>
       </main>
-
       <Footer />
     </>
   );
