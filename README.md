@@ -1,16 +1,82 @@
-# React + Vite
+# SGAT - Sistema de Gestión de Activos Tecnológicos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web desarrollada con React para la administración e inventario de activos tecnológicos dentro de una organización.
 
-Currently, two official plugins are available:
+## Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+SGAT permite registrar, consultar, editar y administrar equipos tecnológicos mediante una interfaz moderna y responsiva.
 
-## React Compiler
+El proyecto fue desarrollado como parte del programa de Desarrollo Web de TripleTen utilizando React, React Router y Context API.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Funcionalidades
 
-## Expanding the ESLint configuration
+- Dashboard con indicadores generales
+- Inventario de equipos
+- Búsqueda de equipos
+- Registro de nuevos equipos
+- Edición de equipos existentes
+- Eliminación de equipos
+- Vista de detalle por equipo
+- Perfil de usuario
+- Inicio de sesión
+- Consumo de API externa mediante fetch
+- Estado global con Context API
+- Navegación mediante React Router
+- Diseño responsive
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tecnologías utilizadas
+
+- React
+- Vite
+- React Router DOM
+- React Icons
+- Context API
+- CSS3
+- JavaScript ES6+
+
+## Estructura del proyecto
+
+```text
+src
+├── assets
+├── components
+├── contexts
+├── data
+├── pages
+├── services
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+## Instalación
+
+Clonar repositorio:
+
+```bash
+git clone URL_DEL_REPOSITORIO
+```
+
+Instalar dependencias:
+
+```bash
+npm install
+```
+
+Ejecutar servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+Generar versión de producción:
+
+```bash
+npm run build
+```
+
+## Autor
+
+Fernando Salvador
+
+Proyecto desarrollado para TripleTen.
