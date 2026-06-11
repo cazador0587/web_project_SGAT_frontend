@@ -32,6 +32,9 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .header__avatar {
@@ -62,17 +65,6 @@
 
 .header__profile-wrapper {
   position: relative;
-}
-
-.header__profile {
-  background: transparent;
-  border: none;
-
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  cursor: pointer;
 }
 
 .header__profile-info {
