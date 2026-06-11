@@ -1,6 +1,7 @@
 .header {
-  height: 70px;
-  background: #111827;
+  min-height: 76px;
+  background: #0b1120;
+  border-bottom: 1px solid #1e293b;
 
   display: flex;
   justify-content: space-between;
@@ -9,13 +10,101 @@
   padding: 0 40px;
 }
 
+.header__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .header__logo {
+  color: #ffffff;
   font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.header__subtitle {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.header__profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__avatar {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  background: #2563eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
   font-weight: 700;
 }
 
 .header__user {
+  color: white;
   font-size: 14px;
+  font-weight: 700;
+}
+
+.header__role {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.header__profile-wrapper {
+  position: relative;
+}
+
+.header__profile {
+  background: transparent;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  cursor: pointer;
+}
+
+.header__profile-info {
+  text-align: left;
+}
+
+.header__menu {
+  position: absolute;
+  top: 56px;
+  right: 0;
+
+  width: 180px;
+
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+
+  padding: 8px;
+
+  z-index: 10;
+}
+
+.header__menu-link {
+  display: block;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.header__menu-link:hover {
+  background: #334155;
 }
 
 @media screen and (max-width: 768px) {
@@ -27,7 +116,21 @@
     font-size: 24px;
   }
 
+  .header__subtitle {
+    font-size: 12px;
+  }
+
+  .header__avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
   .header__user {
     font-size: 12px;
+  }
+
+  .header__role {
+    display: none;
   }
 }
