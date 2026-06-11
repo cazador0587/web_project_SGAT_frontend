@@ -1,12 +1,41 @@
 import "./Navigation.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navigation() {
   return (
     <nav className="navigation">
-      <Link to="/">Dashboard</Link>
-      <Link to="/inventory">Inventario</Link>
-      <Link to="/register-equipment">Registrar Equipo</Link>
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive
+            ? "navigation__link navigation__link_active"
+            : "navigation__link"
+        }
+      >
+        Dashboard
+      </NavLink>
+
+      <NavLink
+        to="/inventory"
+        className={({ isActive }) =>
+          isActive
+            ? "navigation__link navigation__link_active"
+            : "navigation__link"
+        }
+      >
+        Inventario
+      </NavLink>
+
+      <NavLink
+        to="/register-equipment"
+        className={({ isActive }) =>
+          isActive
+            ? "navigation__link navigation__link_active"
+            : "navigation__link"
+        }
+      >
+        Registrar Equipo
+      </NavLink>
     </nav>
   );
 }
