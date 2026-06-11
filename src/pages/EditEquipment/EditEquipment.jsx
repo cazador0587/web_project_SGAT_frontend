@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { initialEquipments } from "../../data/equipments";
+import EquipmentContext from "../../contexts/EquipmentContext";
 import "./EditEquipment.css";
 
 function EditEquipment() {
   const { id } = useParams();
+  const { equipments } = useContext(EquipmentContext);
 
-  const equipment = initialEquipments.find((item) => item.id === Number(id));
+  const equipment = equipments.find(
+    (item) => item.id === Number(id)
+  );
 
   if (!equipment) {
     return (
@@ -27,9 +31,17 @@ function EditEquipment() {
             placeholder="Nombre del equipo"
           />
 
-          <input type="text" defaultValue={equipment.brand} placeholder="Marca" />
+          <input
+            type="text"
+            defaultValue={equipment.brand}
+            placeholder="Marca"
+          />
 
-          <input type="text" defaultValue={equipment.model} placeholder="Modelo" />
+          <input
+            type="text"
+            defaultValue={equipment.model}
+            placeholder="Modelo"
+          />
 
           <input
             type="text"
@@ -37,7 +49,11 @@ function EditEquipment() {
             placeholder="Número de serie"
           />
 
-          <input type="text" defaultValue={equipment.location} placeholder="Ubicación" />
+          <input
+            type="text"
+            defaultValue={equipment.location}
+            placeholder="Ubicación"
+          />
 
           <select defaultValue={equipment.status}>
             <option>Activo</option>

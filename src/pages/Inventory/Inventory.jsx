@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Inventory.css";
 import { FaPlus, FaEdit, FaTrash, FaSearch } from "react-icons/fa";
-import { initialEquipments } from "../../data/equipments";
+import EquipmentContext from "../../contexts/EquipmentContext";
 
 function Inventory() {
-  const [equipments, setEquipments] = useState(initialEquipments);
+  const { equipments, setEquipments } = useContext(EquipmentContext);
   const [searchValue, setSearchValue] = useState("");
 
   const handleDeleteEquipment = (equipmentId) => {

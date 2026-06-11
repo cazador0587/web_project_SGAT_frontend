@@ -1,10 +1,12 @@
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { initialEquipments } from "../../data/equipments";
+import EquipmentContext from "../../contexts/EquipmentContext";
 import "./EquipmentDetail.css";
 
 function EquipmentDetail() {
   const { id } = useParams();
-  const equipment = initialEquipments.find(
+  const { equipments } = useContext(EquipmentContext);
+  const equipment = equipments.find(
     (item) => item.id === Number(id)
   );
 

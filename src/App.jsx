@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header/Header";
@@ -11,10 +12,15 @@ import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
 import EquipmentDetail from "./pages/EquipmentDetail/EquipmentDetail";
 import EditEquipment from "./pages/EditEquipment/EditEquipment";
+import EquipmentContext from "./contexts/EquipmentContext";
+import { initialEquipments } from "./data/equipments";
+
 
 function App() {
+  const [equipments, setEquipments] = useState(initialEquipments);
+
   return (
-    <>
+    <EquipmentContext.Provider value={{ equipments, setEquipments }}>
       <Header />
       <Navigation />
 
@@ -29,8 +35,9 @@ function App() {
           <Route path="/equipment/:id/edit" element={<EditEquipment />} />
         </Routes>
       </main>
+      
       <Footer />
-    </>
+    </EquipmentContext.Provider>
   );
 }
 
