@@ -36,6 +36,7 @@ function RegisterEquipment() {
 
     const newEquipment = {
       id: Date.now(),
+      createdAt: new Date().toISOString(),
       ...formData,
     };
 
