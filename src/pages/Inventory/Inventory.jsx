@@ -8,6 +8,20 @@ function Inventory() {
   const { equipments, setEquipments } = useContext(EquipmentContext);
   const [searchValue, setSearchValue] = useState("");
 
+  const totalEquipments = equipments.length;
+
+  const activeEquipments = equipments.filter(
+    (equipment) => equipment.status === "activo",
+  ).length;
+
+  const repairEquipments = equipments.filter(
+    (equipment) => equipment.status === "reparacion",
+  ).length;
+
+  const inactiveEquipments = equipments.filter(
+    (equipment) => equipment.status === "baja",
+  ).length;
+
   const handleDeleteEquipment = (equipmentId) => {
     const confirmDelete = window.confirm(
       "¿Estás seguro de que deseas eliminar este equipo?",
@@ -22,7 +36,7 @@ function Inventory() {
 
   const filteredEquipments = equipments.filter((equipment) => {
     const searchText = searchValue.toLowerCase();
-
+    
     return (
       equipment.name.toLowerCase().includes(searchText) ||
       equipment.brand.toLowerCase().includes(searchText) ||
@@ -40,22 +54,22 @@ function Inventory() {
 
       <div className="inventory__summary">
         <div className="inventory__summary-card">
-          <h3>120</h3>
+          <h3>{totalEquipments}</h3>
           <p>Total</p>
         </div>
 
         <div className="inventory__summary-card">
-          <h3>95</h3>
+          <h3>{activeEquipments}</h3>
           <p>Activos</p>
         </div>
 
         <div className="inventory__summary-card">
-          <h3>15</h3>
+          <h3>{repairEquipments}</h3>
           <p>Reparación</p>
         </div>
 
         <div className="inventory__summary-card">
-          <h3>10</h3>
+          <h3>{inactiveEquipments}</h3>
           <p>Baja</p>
         </div>
       </div>
