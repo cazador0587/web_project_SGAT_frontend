@@ -1,90 +1,154 @@
 .register-equipment {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 48px 20px;
 }
 
-.register-equipment__container {
-  background: #1e293b;
-  padding: 40px;
-  border-radius: 16px;
+.register-equipment__hero {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 1px solid #334155;
+  border-radius: 22px;
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.register-equipment__label {
+  color: #60a5fa;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .register-equipment__title {
-  text-align: center;
-  margin-bottom: 30px;
   color: white;
+  font-size: 34px;
+  margin: 12px 0 8px;
+}
+
+.register-equipment__subtitle {
+  color: #94a3b8;
 }
 
 .register-equipment__form {
+  display: grid;
+  gap: 24px;
+}
+
+.register-equipment__section {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 18px;
+  padding: 26px;
+}
+
+.register-equipment__section h3 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.register-equipment__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
 .register-equipment__group {
+  color: #cbd5e1;
+  font-weight: 700;
+
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.register-equipment__group label {
-  color: white;
-  font-weight: 600;
-}
-
 .register-equipment__group input,
 .register-equipment__group select,
 .register-equipment__group textarea {
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: white;
+
+  font-family: inherit;
+}
+
+.register-equipment__group input:focus,
+.register-equipment__group select:focus,
+.register-equipment__group textarea:focus {
+  outline: none;
+  border-color: #2563eb;
 }
 
 .register-equipment__group textarea {
-  resize: none;
-}
-
-.register-equipment__group:last-of-type {
-  grid-column: span 2;
+  resize: vertical;
 }
 
 .register-equipment__actions {
-  grid-column: span 2;
-
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 12px;
+}
 
-  margin-top: 20px;
+.register-equipment__save,
+.register-equipment__cancel {
+  border: none;
+  border-radius: 10px;
+  padding: 14px 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+  font-weight: 700;
 }
 
 .register-equipment__save {
   background: #16a34a;
   color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
 }
 
 .register-equipment__cancel {
-  background: #dc2626;
+  background: #334155;
   color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
+}
+
+.register-equipment__save:hover {
+  background: #15803d;
+}
+
+.register-equipment__cancel:hover {
+  background: #475569;
 }
 
 @media screen and (max-width: 768px) {
+  .register-equipment {
+    padding: 32px 16px;
+  }
 
-  .register-equipment__form {
+  .register-equipment__grid {
     grid-template-columns: 1fr;
   }
 
-  .register-equipment__group:last-of-type,
+  .register-equipment__hero,
+  .register-equipment__section {
+    padding: 22px;
+  }
+
+  .register-equipment__title {
+    font-size: 28px;
+  }
+
   .register-equipment__actions {
-    grid-column: span 1;
+    flex-direction: column-reverse;
+  }
+
+  .register-equipment__save,
+  .register-equipment__cancel {
+    width: 100%;
+    justify-content: center;
   }
 }

@@ -94,14 +94,6 @@ function Inventory() {
             onChange={(e) => setSearchValue(e.target.value)}
           />
         </div>
-
-        {/*<button className="inventory__search-btn" type="button">
-          <FaSearch /> Buscar
-        </button>
-
-        <Link to="/register-equipment" className="inventory__add-btn">
-          <FaPlus /> Nuevo
-        </Link>*/}
       </div>
 
       <div className="inventory__table">
