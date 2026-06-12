@@ -1,36 +1,91 @@
+import {
+  FaEnvelope,
+  FaBuilding,
+  FaClock,
+  FaUserShield,
+  FaLaptop,
+  FaSignOutAlt,
+  FaEdit,
+} from "react-icons/fa";
 import "./Profile.css";
 
 function Profile() {
   return (
     <section className="profile">
-      <div className="profile__card">
-        <div className="profile__avatar">FS</div>
+      <div className="profile__layout">
+        <aside className="profile__sidebar">
+          <div className="profile__avatar">FS</div>
 
-        <h2 className="profile__name">Fernando Salvador</h2>
+          <h2 className="profile__name">Fernando Salvador</h2>
 
-        <p className="profile__role">Administrador SGAT</p>
+          <p className="profile__role">Administrador SGAT</p>
 
-        <div className="profile__info">
-          <div className="profile__row">
-            <span>Correo:</span>
-            <p>fernando@sgat.com</p>
+          <span className="profile__status">Activo</span>
+        </aside>
+
+        <div className="profile__content">
+          <div className="profile__header">
+            <div>
+              <p className="profile__label">Perfil de usuario</p>
+              <h2>Información de la cuenta</h2>
+            </div>
+
+            <button className="profile__edit">
+              <FaEdit />
+              Editar Perfil
+            </button>
           </div>
 
-          <div className="profile__row">
-            <span>Departamento:</span>
-            <p>Sistemas</p>
+          <div className="profile__stats">
+            <div className="profile__stat-card">
+              <FaLaptop />
+              <div>
+                <h3>12</h3>
+                <p>Equipos asignados</p>
+              </div>
+            </div>
+
+            <div className="profile__stat-card">
+              <FaUserShield />
+              <div>
+                <h3>Admin</h3>
+                <p>Nivel de acceso</p>
+              </div>
+            </div>
           </div>
 
-          <div className="profile__row">
-            <span>Último acceso:</span>
-            <p>09/06/2026</p>
+          <div className="profile__info">
+            <div className="profile__row">
+              <FaEnvelope />
+              <div>
+                <span>Correo electrónico</span>
+                <p>fernando@sgat.com</p>
+              </div>
+            </div>
+
+            <div className="profile__row">
+              <FaBuilding />
+              <div>
+                <span>Departamento</span>
+                <p>Sistemas</p>
+              </div>
+            </div>
+
+            <div className="profile__row">
+              <FaClock />
+              <div>
+                <span>Último acceso</span>
+                <p>09/06/2026</p>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div className="profile__actions">
-          <button className="profile__edit">Editar Perfil</button>
-
-          <button className="profile__logout">Cerrar Sesión</button>
+          <div className="profile__actions">
+            <button className="profile__logout">
+              <FaSignOutAlt />
+              Cerrar Sesión
+            </button>
+          </div>
         </div>
       </div>
     </section>
