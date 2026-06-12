@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Inventory.css";
-import { FaPlus, FaEdit, FaTrash, FaSearch } from "react-icons/fa";
+import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import EquipmentContext from "../../contexts/EquipmentContext";
 
 function Inventory() {
@@ -50,7 +50,16 @@ function Inventory() {
 
   return (
     <section className="inventory">
-      <h2 className="inventory__title">Inventario de Equipos</h2>
+      <div className="inventory__page-header">
+        <h2 className="inventory__title">Inventario de Equipos</h2>
+
+        <div className="inventory__header-actions">
+          <Link to="/register-equipment" className="inventory__add-btn">
+            <FaPlus />
+              Agregar
+            </Link>
+        </div>
+      </div>
 
       <div className="inventory__summary">
         <div className="inventory__summary-card">
@@ -75,21 +84,24 @@ function Inventory() {
       </div>
 
       <div className="inventory__toolbar">
-        <input
-          className="inventory__input"
-          type="text"
-          placeholder="Buscar equipo..."
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-        />
+        <div className="inventory__search-container">
+          <label className="inventory__search-label">Buscar equipos</label>
+          <input
+            className="inventory__input"
+            type="text"
+            placeholder="Nombre, marca, serie o responsable..."
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+        </div>
 
-        <button className="inventory__search-btn" type="button">
+        {/*<button className="inventory__search-btn" type="button">
           <FaSearch /> Buscar
         </button>
 
         <Link to="/register-equipment" className="inventory__add-btn">
-          <FaPlus /> Registrar
-        </Link>
+          <FaPlus /> Nuevo
+        </Link>*/}
       </div>
 
       <div className="inventory__table">
