@@ -2,6 +2,7 @@ import { FaLock, FaUserShield, FaChartBar, FaDesktop } from "react-icons/fa";
 import "./Login.css";
 
 function Login() {
+
   return (
     <section className="login">
       <div className="login__container">
@@ -51,7 +52,8 @@ function Login() {
             Ingresa tus credenciales para acceder al sistema
           </p>
 
-          <form className="login__form">
+          <form
+            className="login__form">
             <div className="login__group">
               <label>Correo Electrónico</label>
 
@@ -73,7 +75,10 @@ function Login() {
               <a href="#">¿Olvidaste tu contraseña?</a>
             </div>
 
-            <button type="submit" className="login__button">
+            <button
+              type="submit"
+              className="login__button"
+            >
               Iniciar sesión
             </button>
           </form>

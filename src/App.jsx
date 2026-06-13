@@ -14,13 +14,32 @@ import EquipmentDetail from "./pages/EquipmentDetail/EquipmentDetail";
 import EditEquipment from "./pages/EditEquipment/EditEquipment";
 import EquipmentContext from "./contexts/EquipmentContext";
 import { initialEquipments } from "./data/equipments";
+import Toast from "./components/Toast/Toast";
 
 
 function App() {
   const [equipments, setEquipments] = useState(initialEquipments);
+  const [toast, setToast] = useState({
+    show: false,
+    message: "",
+  });
+
+  const showToast = (message) => {
+    setToast({
+      show: true,
+      message,
+    });
+
+    setTimeout(() => {
+      setToast({
+        show: false,
+        message: "",
+      });
+    }, 3000);
+  };
 
   return (
-    <EquipmentContext.Provider value={{ equipments, setEquipments }}>
+    <EquipmentContext.Provider value={{ equipments, setEquipments, showToast }}>
       <Header />
       <Navigation />
 
@@ -35,8 +54,9 @@ function App() {
           <Route path="/equipment/:id/edit" element={<EditEquipment />} />
         </Routes>
       </main>
-      
+
       <Footer />
+      <Toast message={toast.message} show={toast.show} />
     </EquipmentContext.Provider>
   );
 }

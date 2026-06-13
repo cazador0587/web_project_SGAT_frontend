@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import EquipmentContext from "../../contexts/EquipmentContext";
 import {
   FaEnvelope,
   FaBuilding,
@@ -6,31 +8,46 @@ import {
   FaLaptop,
   FaSignOutAlt,
   FaEdit,
+  FaIdBadge,
 } from "react-icons/fa";
 import "./Profile.css";
 
 function Profile() {
+  const { showToast } = useContext(EquipmentContext);
+
   return (
     <section className="profile">
       <div className="profile__layout">
         <aside className="profile__sidebar">
           <div className="profile__avatar">FS</div>
 
-          <h2 className="profile__name">Fernando Salvador</h2>
-
-          <p className="profile__role">Administrador SGAT</p>
-
           <span className="profile__status">Activo</span>
+
+          <div className="profile__sidebar-info">
+            <FaIdBadge />
+            <div>
+              <span>ID de usuario</span>
+              <p>SGAT-ADM-001</p>
+            </div>
+          </div>
         </aside>
 
         <div className="profile__content">
           <div className="profile__header">
             <div>
               <p className="profile__label">Perfil de usuario</p>
-              <h2>Información de la cuenta</h2>
+
+              <h2 className="profile__name">Fernando Salvador</h2>
+
+              <p className="profile__role">Administrador SGAT</p>
             </div>
 
-            <button className="profile__edit">
+            <button
+              className="profile__edit"
+              onClick={() =>
+                showToast("Función de edición de perfil próximamente")
+              }
+            >
               <FaEdit />
               Editar Perfil
             </button>
@@ -81,7 +98,10 @@ function Profile() {
           </div>
 
           <div className="profile__actions">
-            <button className="profile__logout">
+            <button
+              className="profile__logout"
+              onClick={() => showToast("Sesión cerrada correctamente")}
+            >
               <FaSignOutAlt />
               Cerrar Sesión
             </button>

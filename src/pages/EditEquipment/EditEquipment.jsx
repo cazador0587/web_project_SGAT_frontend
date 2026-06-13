@@ -7,7 +7,7 @@ import "./EditEquipment.css";
 function EditEquipment() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { equipments, setEquipments } = useContext(EquipmentContext);
+  const { equipments, setEquipments, showToast } = useContext(EquipmentContext);
 
   const equipment = equipments.find((item) => item.id === Number(id));
 
@@ -55,6 +55,7 @@ function EditEquipment() {
     );
 
     navigate(`/equipment/${id}`);
+    showToast("Equipo actualizado correctamente");
   };
 
   const handleCancel = () => {

@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import "./Inventory.css";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import EquipmentContext from "../../contexts/EquipmentContext";
+import ConfirmDeleteModal from "../../components/ConfirmDeleteModal/ConfirmDeleteModal";
+import "./Inventory.css";
 
 function Inventory() {
-  const { equipments, setEquipments } = useContext(EquipmentContext);
+  const { equipments, setEquipments, showToast } = useContext(EquipmentContext);
   const [searchValue, setSearchValue] = useState("");
+  const [equipmentToDelete, setEquipmentToDelete] = useState(null);
 
   const totalEquipments = equipments.length;
 
@@ -22,16 +24,19 @@ function Inventory() {
     (equipment) => equipment.status === "baja",
   ).length;
 
-  const handleDeleteEquipment = (equipmentId) => {
-    const confirmDelete = window.confirm(
-      "¿Estás seguro de que deseas eliminar este equipo?",
-    );
+  const handleDeleteEquipment = (equipment) => {
+    setEquipmentToDelete(equipment);
+  };
 
-    if (!confirmDelete) return;
-
+  const confirmDeleteEquipment = () => {
     setEquipments((currentEquipments) =>
-      currentEquipments.filter((equipment) => equipment.id !== equipmentId),
+      currentEquipments.filter(
+        (equipment) => equipment.id !== equipmentToDelete.id,
+      ),
     );
+
+    setEquipmentToDelete(null);
+    showToast("Equipo eliminado correctamente");
   };
 
   const filteredEquipments = equipments.filter((equipment) => {
@@ -56,8 +61,8 @@ function Inventory() {
         <div className="inventory__header-actions">
           <Link to="/register-equipment" className="inventory__add-btn">
             <FaPlus />
-              Agregar
-            </Link>
+            Agregar
+          </Link>
         </div>
       </div>
 
@@ -138,7 +143,7 @@ function Inventory() {
               <button
                 className="inventory__delete-btn"
                 type="button"
-                onClick={() => handleDeleteEquipment(equipment.id)}
+                onClick={() => handleDeleteEquipment(equipment)}
               >
                 <FaTrash />
               </button>
@@ -150,6 +155,13 @@ function Inventory() {
           <p className="inventory__empty">No se encontraron equipos.</p>
         )}
       </div>
+      {equipmentToDelete && (
+        <ConfirmDeleteModal
+          equipment={equipmentToDelete}
+          onClose={() => setEquipmentToDelete(null)}
+          onConfirm={confirmDeleteEquipment}
+        />
+      )}
     </section>
   );
 }

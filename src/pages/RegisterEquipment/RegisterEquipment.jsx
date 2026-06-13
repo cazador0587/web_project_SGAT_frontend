@@ -17,7 +17,7 @@ const initialFormData = {
 };
 
 function RegisterEquipment() {
-  const { setEquipments } = useContext(EquipmentContext);
+  const { setEquipments, showToast } = useContext(EquipmentContext);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState(initialFormData);
@@ -41,6 +41,7 @@ function RegisterEquipment() {
     };
 
     setEquipments((currentEquipments) => [newEquipment, ...currentEquipments]);
+    showToast("Equipo registrado correctamente");
 
     setFormData(initialFormData);
     navigate("/inventory");
