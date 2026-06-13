@@ -15,7 +15,7 @@ function Navigation() {
         Dashboard
       </NavLink>
 
-      {/* <NavLink
+      <NavLink
         to="/inventory"
         className={({ isActive }) =>
           isActive
@@ -24,7 +24,7 @@ function Navigation() {
         }
       >
         Inventario
-      </NavLink>*/}
+      </NavLink>
 
       { /* <NavLink
         to="/register-equipment"

@@ -193,6 +193,26 @@
   background: #1d4ed8;
 }
 
+.login__forgot {
+  background: transparent;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0;
+}
+
+.login__forgot:hover {
+  text-decoration: underline;
+}
+
+.login__access-note {
+  color: #64748b;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.5;
+}
+
 @media screen and (max-width: 900px) {
   .login__container {
     grid-template-columns: 1fr;

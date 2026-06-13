@@ -1,7 +1,18 @@
+import { useContext } from "react";
 import { FaLock, FaUserShield, FaChartBar, FaDesktop } from "react-icons/fa";
+import EquipmentContext from "../../contexts/EquipmentContext";
 import "./Login.css";
 
 function Login() {
+  const { showToast } = useContext(EquipmentContext);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
+  const handleForgotPassword = () => {
+    showToast("Función de recuperación de contraseña próximamente");
+  };
 
   return (
     <section className="login">
@@ -52,18 +63,17 @@ function Login() {
             Ingresa tus credenciales para acceder al sistema
           </p>
 
-          <form
-            className="login__form">
+          <form className="login__form" onSubmit={handleSubmit}>
             <div className="login__group">
               <label>Correo Electrónico</label>
 
-              <input type="email" placeholder="usuario@empresa.com" />
+              <input type="email" placeholder="usuario@empresa.com" required />
             </div>
 
             <div className="login__group">
               <label>Contraseña</label>
 
-              <input type="password" placeholder="********" />
+              <input type="password" placeholder="****" required />
             </div>
 
             <div className="login__options">
@@ -72,15 +82,22 @@ function Login() {
                 Recordarme
               </label>
 
-              <a href="#">¿Olvidaste tu contraseña?</a>
+              <button
+                type="button"
+                className="login__forgot"
+                onClick={handleForgotPassword}
+              >
+                ¿Olvidaste tu contraseña?
+              </button>
             </div>
 
-            <button
-              type="submit"
-              className="login__button"
-            >
+            <button type="submit" className="login__button">
               Iniciar sesión
             </button>
+
+            <p className="login__access-note">
+              ¿No tienes acceso? Contacta al administrador del sistema.
+            </p>
           </form>
         </div>
       </div>
