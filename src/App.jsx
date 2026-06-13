@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header/Header";
@@ -19,7 +19,15 @@ import EditProfile from "./pages/EditProfile/EditProfile";
 
 
 function App() {
-  const [equipments, setEquipments] = useState(initialEquipments);
+  const [equipments, setEquipments] = useState(() => {
+    const savedEquipments = localStorage.getItem("sgat-equipments");
+    return savedEquipments ? JSON.parse(savedEquipments) : initialEquipments;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("sgat-equipments", JSON.stringify(equipments));
+  }, [equipments]);
+
   const [toast, setToast] = useState({
     show: false,
     message: "",
