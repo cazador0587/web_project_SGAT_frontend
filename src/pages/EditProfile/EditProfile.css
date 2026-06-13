@@ -1,0 +1,146 @@
+.edit-profile {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 20px;
+}
+
+.edit-profile__hero {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 1px solid #334155;
+  border-radius: 22px;
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.edit-profile__label {
+  color: #60a5fa;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.edit-profile__title {
+  color: white;
+  font-size: 34px;
+  margin: 12px 0 8px;
+}
+
+.edit-profile__subtitle {
+  color: #94a3b8;
+}
+
+.edit-profile__form {
+  display: grid;
+  gap: 24px;
+}
+
+.edit-profile__section {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 18px;
+  padding: 26px;
+}
+
+.edit-profile__section h3 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.edit-profile__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.edit-profile__group {
+  color: #cbd5e1;
+  font-weight: 700;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-profile__group input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: white;
+
+  font-family: inherit;
+}
+
+.edit-profile__group input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.edit-profile__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.edit-profile__save,
+.edit-profile__cancel {
+  border: none;
+  border-radius: 10px;
+  padding: 14px 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.edit-profile__save {
+  background: #2563eb;
+  color: white;
+}
+
+.edit-profile__cancel {
+  background: #334155;
+  color: white;
+}
+
+.edit-profile__save:hover {
+  background: #1d4ed8;
+}
+
+.edit-profile__cancel:hover {
+  background: #475569;
+}
+
+@media screen and (max-width: 768px) {
+  .edit-profile {
+    padding: 32px 16px;
+  }
+
+  .edit-profile__hero,
+  .edit-profile__section {
+    padding: 22px;
+  }
+
+  .edit-profile__title {
+    font-size: 28px;
+  }
+
+  .edit-profile__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-profile__actions {
+    flex-direction: column-reverse;
+  }
+
+  .edit-profile__save,
+  .edit-profile__cancel {
+    width: 100%;
+    justify-content: center;
+  }
+}

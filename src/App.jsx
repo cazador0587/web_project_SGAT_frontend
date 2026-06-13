@@ -15,6 +15,7 @@ import EditEquipment from "./pages/EditEquipment/EditEquipment";
 import EquipmentContext from "./contexts/EquipmentContext";
 import { initialEquipments } from "./data/equipments";
 import Toast from "./components/Toast/Toast";
+import EditProfile from "./pages/EditProfile/EditProfile";
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/equipment/:id" element={<EquipmentDetail />} />
           <Route path="/equipment/:id/edit" element={<EditEquipment />} />
+          <Route path="/profile/edit" element={<EditProfile />} />
         </Routes>
       </main>
 

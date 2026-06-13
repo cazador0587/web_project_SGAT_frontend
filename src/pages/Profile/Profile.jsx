@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import EquipmentContext from "../../contexts/EquipmentContext";
 import {
@@ -42,15 +43,10 @@ function Profile() {
               <p className="profile__role">Administrador SGAT</p>
             </div>
 
-            <button
-              className="profile__edit"
-              onClick={() =>
-                showToast("Función de edición de perfil próximamente")
-              }
-            >
+            <Link className="profile__edit" to="/profile/edit">
               <FaEdit />
               Editar Perfil
-            </button>
+            </Link>
           </div>
 
           <div className="profile__stats">
