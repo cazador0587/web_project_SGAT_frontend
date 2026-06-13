@@ -1,6 +1,12 @@
 import { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
-import { FaEdit, FaMapMarkerAlt, FaUser, FaCalendarAlt } from "react-icons/fa";
+import {
+  FaEdit,
+  FaMapMarkerAlt,
+  FaUser,
+  FaCalendarAlt,
+  FaArrowLeft,
+} from "react-icons/fa";
 import EquipmentContext from "../../contexts/EquipmentContext";
 import "./EquipmentDetail.css";
 
@@ -39,13 +45,20 @@ function EquipmentDetail() {
           </p>
         </div>
 
-        <Link
-          to={`/equipment/${equipment.id}/edit`}
-          className="equipment-detail__edit"
-        >
-          <FaEdit />
-          Editar equipo
-        </Link>
+        <div className="equipment-detail__actions">
+          <Link
+            to={`/equipment/${equipment.id}/edit`}
+            className="equipment-detail__edit"
+          >
+            <FaEdit />
+            Editar equipo
+          </Link>
+
+          <Link to="/inventory" className="equipment-detail__back">
+            <FaArrowLeft />
+            Volver al inventario
+          </Link>
+        </div>
       </div>
 
       <div className="equipment-detail__grid">
