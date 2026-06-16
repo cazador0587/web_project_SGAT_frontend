@@ -31,7 +31,7 @@ function Inventory() {
   const confirmDeleteEquipment = () => {
     setEquipments((currentEquipments) =>
       currentEquipments.filter(
-        (equipment) => equipment.id !== equipmentToDelete.id,
+        (equipment) => equipment._id !== equipmentToDelete._id,
       ),
     );
 
@@ -113,9 +113,9 @@ function Inventory() {
         </div>
 
         {filteredEquipments.map((equipment) => (
-          <div key={equipment.id} className="inventory__row">
+          <div key={equipment._id} className="inventory__row">
             <Link
-              to={`/equipment/${equipment.id}`}
+              to={`/equipment/${equipment._id}`}
               className="inventory__equipment-link"
             >
               {equipment.name}
@@ -134,7 +134,7 @@ function Inventory() {
 
             <div className="inventory__actions">
               <Link
-                to={`/equipment/${equipment.id}/edit`}
+                to={`/equipment/${equipment._id}/edit`}
                 className="inventory__edit-btn"
               >
                 <FaEdit />
