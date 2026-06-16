@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import EquipmentContext from "../../contexts/EquipmentContext";
 import ConfirmDeleteModal from "../../components/ConfirmDeleteModal/ConfirmDeleteModal";
-import mainApi from "../../utils/MainApi"
+import mainApi from "../../utils/MainApi";
 import "./Inventory.css";
 
 function Inventory() {
