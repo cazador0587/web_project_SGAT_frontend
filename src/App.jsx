@@ -11,7 +11,6 @@ import Profile from "./pages/Profile/Profile";
 import EquipmentDetail from "./pages/EquipmentDetail/EquipmentDetail";
 import EditEquipment from "./pages/EditEquipment/EditEquipment";
 import EquipmentContext from "./contexts/EquipmentContext";
-//import { initialEquipments } from "./data/equipments";
 import Toast from "./components/Toast/Toast";
 import EditProfile from "./pages/EditProfile/EditProfile";
 import CurrentUserContext from "./contexts/CurrentUserContext";
@@ -20,15 +19,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [equipments, setEquipments] = useState([]);
-  /*const [equipments, setEquipments] = useState(() => {
-    const savedEquipments = localStorage.getItem("sgat-equipments");
-    return savedEquipments ? JSON.parse(savedEquipments) : initialEquipments;
-  });*/
-
-  /*useEffect(() => {
-    localStorage.setItem("sgat-equipments", JSON.stringify(equipments));
-  }, [equipments]);*/
-
+  
   const [toast, setToast] = useState({
     show: false,
     message: "",
