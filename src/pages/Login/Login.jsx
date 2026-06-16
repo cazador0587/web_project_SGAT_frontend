@@ -1,18 +1,48 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaLock, FaUserShield, FaChartBar, FaDesktop } from "react-icons/fa";
 import EquipmentContext from "../../contexts/EquipmentContext";
 import "./Login.css";
 
-function Login() {
+function Login({ onLogin }) {
   const { showToast } = useContext(EquipmentContext);
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData((currentData) => ({
+      ...currentData,
+      [name]: value,
+    }));
+
+    setErrorMessage("");
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    onLogin(formData)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        setErrorMessage(error || "No se pudo iniciar sesión");
+      });
   };
 
   const handleForgotPassword = () => {
     showToast("Función de recuperación de contraseña próximamente");
   };
+
+  const isFormValid = formData.email && formData.password;
 
   return (
     <section className="login">
@@ -67,14 +97,30 @@ function Login() {
             <div className="login__group">
               <label>Correo Electrónico</label>
 
-              <input type="email" placeholder="usuario@empresa.com" required />
+              <input
+                name="email"
+                type="email"
+                placeholder="usuario@empresa.com"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
             </div>
 
             <div className="login__group">
               <label>Contraseña</label>
 
-              <input type="password" placeholder="****" required />
+              <input
+                name="password"
+                type="password"
+                placeholder="****"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
             </div>
+
+            {errorMessage && <p className="login__error">{errorMessage}</p>}
 
             <div className="login__options">
               <label className="login__remember">
@@ -91,7 +137,11 @@ function Login() {
               </button>
             </div>
 
-            <button type="submit" className="login__button">
+            <button
+              type="submit"
+              className="login__button"
+              disabled={!isFormValid}
+            >
               Iniciar sesión
             </button>
 

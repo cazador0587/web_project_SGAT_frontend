@@ -148,6 +148,7 @@
   border-radius: 10px;
   border: 1px solid #cbd5e1;
   font-size: 15px;
+  transition: border-color 0.2s ease;
 }
 
 .login__group input:focus {
@@ -171,10 +172,10 @@
   gap: 8px;
 }
 
-.login__options a {
+/*.login__options a {
   color: #2563eb;
   font-weight: 600;
-}
+}*/
 
 .login__button {
   background: #2563eb;
@@ -211,6 +212,24 @@
   font-size: 14px;
   text-align: center;
   line-height: 1.5;
+}
+
+.login__error {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.login__button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login__button:disabled:hover {
+  background: #2563eb;
 }
 
 @media screen and (max-width: 900px) {
