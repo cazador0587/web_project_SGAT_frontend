@@ -1,28 +1,47 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import "./Inventory.css";
-import { FaPlus, FaEdit, FaTrash, FaSearch } from "react-icons/fa";
+import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import EquipmentContext from "../../contexts/EquipmentContext";
+import ConfirmDeleteModal from "../../components/ConfirmDeleteModal/ConfirmDeleteModal";
+import "./Inventory.css";
 
 function Inventory() {
-  const { equipments, setEquipments } = useContext(EquipmentContext);
+  const { equipments, setEquipments, showToast } = useContext(EquipmentContext);
   const [searchValue, setSearchValue] = useState("");
+  const [equipmentToDelete, setEquipmentToDelete] = useState(null);
 
-  const handleDeleteEquipment = (equipmentId) => {
-    const confirmDelete = window.confirm(
-      "¿Estás seguro de que deseas eliminar este equipo?",
-    );
+  const totalEquipments = equipments.length;
 
-    if (!confirmDelete) return;
+  const activeEquipments = equipments.filter(
+    (equipment) => equipment.status === "activo",
+  ).length;
 
+  const repairEquipments = equipments.filter(
+    (equipment) => equipment.status === "reparacion",
+  ).length;
+
+  const inactiveEquipments = equipments.filter(
+    (equipment) => equipment.status === "baja",
+  ).length;
+
+  const handleDeleteEquipment = (equipment) => {
+    setEquipmentToDelete(equipment);
+  };
+
+  const confirmDeleteEquipment = () => {
     setEquipments((currentEquipments) =>
-      currentEquipments.filter((equipment) => equipment.id !== equipmentId),
+      currentEquipments.filter(
+        (equipment) => equipment.id !== equipmentToDelete.id,
+      ),
     );
+
+    setEquipmentToDelete(null);
+    showToast("Equipo eliminado correctamente");
   };
 
   const filteredEquipments = equipments.filter((equipment) => {
     const searchText = searchValue.toLowerCase();
-
+    
     return (
       equipment.name.toLowerCase().includes(searchText) ||
       equipment.brand.toLowerCase().includes(searchText) ||
@@ -36,46 +55,50 @@ function Inventory() {
 
   return (
     <section className="inventory">
-      <h2 className="inventory__title">Inventario de Equipos</h2>
+      <div className="inventory__page-header">
+        <h2 className="inventory__title">Inventario de Equipos</h2>
+
+        <div className="inventory__header-actions">
+          <Link to="/register-equipment" className="inventory__add-btn">
+            <FaPlus />
+            Agregar
+          </Link>
+        </div>
+      </div>
 
       <div className="inventory__summary">
         <div className="inventory__summary-card">
-          <h3>120</h3>
+          <h3>{totalEquipments}</h3>
           <p>Total</p>
         </div>
 
         <div className="inventory__summary-card">
-          <h3>95</h3>
+          <h3>{activeEquipments}</h3>
           <p>Activos</p>
         </div>
 
         <div className="inventory__summary-card">
-          <h3>15</h3>
+          <h3>{repairEquipments}</h3>
           <p>Reparación</p>
         </div>
 
         <div className="inventory__summary-card">
-          <h3>10</h3>
+          <h3>{inactiveEquipments}</h3>
           <p>Baja</p>
         </div>
       </div>
 
       <div className="inventory__toolbar">
-        <input
-          className="inventory__input"
-          type="text"
-          placeholder="Buscar equipo..."
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-        />
-
-        <button className="inventory__search-btn" type="button">
-          <FaSearch /> Buscar
-        </button>
-
-        <Link to="/register-equipment" className="inventory__add-btn">
-          <FaPlus /> Registrar
-        </Link>
+        <div className="inventory__search-container">
+          <label className="inventory__search-label">Buscar equipos</label>
+          <input
+            className="inventory__input"
+            type="text"
+            placeholder="Nombre, marca, serie o responsable..."
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+        </div>
       </div>
 
       <div className="inventory__table">
@@ -120,7 +143,7 @@ function Inventory() {
               <button
                 className="inventory__delete-btn"
                 type="button"
-                onClick={() => handleDeleteEquipment(equipment.id)}
+                onClick={() => handleDeleteEquipment(equipment)}
               >
                 <FaTrash />
               </button>
@@ -132,6 +155,13 @@ function Inventory() {
           <p className="inventory__empty">No se encontraron equipos.</p>
         )}
       </div>
+      {equipmentToDelete && (
+        <ConfirmDeleteModal
+          equipment={equipmentToDelete}
+          onClose={() => setEquipmentToDelete(null)}
+          onConfirm={confirmDeleteEquipment}
+        />
+      )}
     </section>
   );
 }

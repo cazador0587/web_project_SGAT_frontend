@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header/Header";
@@ -14,13 +14,41 @@ import EquipmentDetail from "./pages/EquipmentDetail/EquipmentDetail";
 import EditEquipment from "./pages/EditEquipment/EditEquipment";
 import EquipmentContext from "./contexts/EquipmentContext";
 import { initialEquipments } from "./data/equipments";
+import Toast from "./components/Toast/Toast";
+import EditProfile from "./pages/EditProfile/EditProfile";
 
 
 function App() {
-  const [equipments, setEquipments] = useState(initialEquipments);
+  const [equipments, setEquipments] = useState(() => {
+    const savedEquipments = localStorage.getItem("sgat-equipments");
+    return savedEquipments ? JSON.parse(savedEquipments) : initialEquipments;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("sgat-equipments", JSON.stringify(equipments));
+  }, [equipments]);
+
+  const [toast, setToast] = useState({
+    show: false,
+    message: "",
+  });
+
+  const showToast = (message) => {
+    setToast({
+      show: true,
+      message,
+    });
+
+    setTimeout(() => {
+      setToast({
+        show: false,
+        message: "",
+      });
+    }, 3000);
+  };
 
   return (
-    <EquipmentContext.Provider value={{ equipments, setEquipments }}>
+    <EquipmentContext.Provider value={{ equipments, setEquipments, showToast }}>
       <Header />
       <Navigation />
 
@@ -33,10 +61,12 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/equipment/:id" element={<EquipmentDetail />} />
           <Route path="/equipment/:id/edit" element={<EditEquipment />} />
+          <Route path="/profile/edit" element={<EditProfile />} />
         </Routes>
       </main>
-      
+
       <Footer />
+      <Toast message={toast.message} show={toast.show} />
     </EquipmentContext.Provider>
   );
 }

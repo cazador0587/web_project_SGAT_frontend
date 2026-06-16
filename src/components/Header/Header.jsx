@@ -32,11 +32,27 @@ function Header() {
 
         {isMenuOpen && (
           <div className="header__menu">
-            <Link to="/profile" className="header__menu-link">
+            <Link
+              to="/profile"
+              className="header__menu-link"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Mi Perfil
             </Link>
 
-            <Link to="/login" className="header__menu-link">
+            <Link
+              to="/profile/edit"
+              className="header__menu-link"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Editar Perfil
+            </Link>
+
+            <Link
+              to="/login"
+              className="header__menu-link header__menu-link_logout"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Cerrar Sesión
             </Link>
           </div>

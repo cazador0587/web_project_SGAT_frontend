@@ -1,10 +1,10 @@
-.register-equipment {
-  max-width: 1100px;
+.edit-profile {
+  max-width: 900px;
   margin: 0 auto;
   padding: 48px 20px;
 }
 
-.register-equipment__hero {
+.edit-profile__hero {
   background: linear-gradient(135deg, #1e293b, #0f172a);
   border: 1px solid #334155;
   border-radius: 22px;
@@ -12,47 +12,47 @@
   margin-bottom: 24px;
 }
 
-.register-equipment__label {
+.edit-profile__label {
   color: #60a5fa;
   font-size: 13px;
   font-weight: 800;
   text-transform: uppercase;
 }
 
-.register-equipment__title {
+.edit-profile__title {
   color: white;
   font-size: 34px;
   margin: 12px 0 8px;
 }
 
-.register-equipment__subtitle {
+.edit-profile__subtitle {
   color: #94a3b8;
 }
 
-.register-equipment__form {
+.edit-profile__form {
   display: grid;
   gap: 24px;
 }
 
-.register-equipment__section {
+.edit-profile__section {
   background: #1e293b;
   border: 1px solid #334155;
   border-radius: 18px;
   padding: 26px;
 }
 
-.register-equipment__section h3 {
+.edit-profile__section h3 {
   color: white;
   margin-bottom: 20px;
 }
 
-.register-equipment__grid {
+.edit-profile__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
-.register-equipment__group {
+.edit-profile__group {
   color: #cbd5e1;
   font-weight: 700;
 
@@ -61,9 +61,7 @@
   gap: 8px;
 }
 
-.register-equipment__group input,
-.register-equipment__group select,
-.register-equipment__group textarea {
+.edit-profile__group input {
   width: 100%;
   padding: 14px;
   border-radius: 10px;
@@ -75,25 +73,19 @@
   font-family: inherit;
 }
 
-.register-equipment__group input:focus,
-.register-equipment__group select:focus,
-.register-equipment__group textarea:focus {
+.edit-profile__group input:focus {
   outline: none;
   border-color: #2563eb;
 }
 
-.register-equipment__group textarea {
-  resize: vertical;
-}
-
-.register-equipment__actions {
+.edit-profile__actions {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
 }
 
-.register-equipment__save,
-.register-equipment__cancel {
+.edit-profile__save,
+.edit-profile__cancel {
   border: none;
   border-radius: 10px;
   padding: 14px 18px;
@@ -106,48 +98,48 @@
   font-weight: 700;
 }
 
-.register-equipment__save {
-  background: #16a34a;
+.edit-profile__save {
+  background: #2563eb;
   color: white;
 }
 
-.register-equipment__cancel {
+.edit-profile__cancel {
   background: #334155;
   color: white;
 }
 
-.register-equipment__save:hover {
-  background: #15803d;
+.edit-profile__save:hover {
+  background: #1d4ed8;
 }
 
-.register-equipment__cancel:hover {
+.edit-profile__cancel:hover {
   background: #475569;
 }
 
 @media screen and (max-width: 768px) {
-  .register-equipment {
+  .edit-profile {
     padding: 32px 16px;
   }
 
-  .register-equipment__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .register-equipment__hero,
-  .register-equipment__section {
+  .edit-profile__hero,
+  .edit-profile__section {
     padding: 22px;
   }
 
-  .register-equipment__title {
+  .edit-profile__title {
     font-size: 28px;
   }
 
-  .register-equipment__actions {
+  .edit-profile__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-profile__actions {
     flex-direction: column-reverse;
   }
 
-  .register-equipment__save,
-  .register-equipment__cancel {
+  .edit-profile__save,
+  .edit-profile__cancel {
     width: 100%;
     justify-content: center;
   }
