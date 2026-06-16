@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaLock, FaUserShield, FaChartBar, FaDesktop } from "react-icons/fa";
 import EquipmentContext from "../../contexts/EquipmentContext";
 import "./Login.css";
@@ -146,7 +146,7 @@ function Login({ onLogin }) {
             </button>
 
             <p className="login__access-note">
-              ¿No tienes acceso? Contacta al administrador del sistema.
+              ¿No tienes cuenta? <Link to="/register">Registrarse</Link>
             </p>
           </form>
         </div>

@@ -16,6 +16,7 @@ import EditProfile from "./pages/EditProfile/EditProfile";
 import CurrentUserContext from "./contexts/CurrentUserContext";
 import mainApi from "./utils/MainApi";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import Register from "./pages/Register/Register";
 
 function App() {
   const [equipments, setEquipments] = useState([]);
@@ -122,6 +123,7 @@ function App() {
               }
             />
             <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="/register" element={<Register />} />
             <Route
               path="/inventory"
               element={
