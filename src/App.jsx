@@ -109,8 +109,8 @@ function App() {
       <EquipmentContext.Provider
         value={{ equipments, setEquipments, showToast }}
       >
-        <Header />
-        <Navigation />
+        {isLoggedIn && <Header />}
+        {isLoggedIn && <Navigation />}
 
         <main>
           <Routes>

@@ -22,8 +22,14 @@
 
 .register__info {
   background:
-    linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.96)),
-    radial-gradient(circle at center, rgba(37, 99, 235, 0.45), transparent 50%);
+    linear-gradient(
+      rgba(15, 23, 42, 0.35),
+      rgba(15, 23, 42, 0.9)
+    ),
+    url("./login-bg.png");
+
+  background-size: cover;
+  background-position: center;
 
   color: white;
   padding: 48px;
@@ -32,6 +38,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
 
 .register__brand {
   display: flex;

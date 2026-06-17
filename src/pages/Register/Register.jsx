@@ -1,8 +1,9 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaUserPlus, FaDesktop } from "react-icons/fa";
-import EquipmentContext from "../../contexts/EquipmentContext";
+import { FaUserPlus } from "react-icons/fa";
+/*import EquipmentContext from "../../contexts/EquipmentContext";*/
 import mainApi from "../../utils/MainApi";
+import InfoModal from "../InfoModal/InfoModal";
 import "./Register.css";
 
 const initialFormData = {
@@ -12,11 +13,12 @@ const initialFormData = {
 };
 
 function Register() {
-  const navigate = useNavigate();
-  const { showToast } = useContext(EquipmentContext);
+    const navigate = useNavigate();
+    /*const { showToast } = useContext(EquipmentContext);*/
 
-  const [formData, setFormData] = useState(initialFormData);
-  const [errorMessage, setErrorMessage] = useState("");
+    const [formData, setFormData] = useState(initialFormData);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -35,9 +37,11 @@ function Register() {
     mainApi
       .signup(formData)
       .then(() => {
-        showToast("Usuario registrado correctamente");
         setFormData(initialFormData);
-        navigate("/login");
+        setIsSuccessModalOpen(true);
+        /*showToast("Usuario registrado correctamente");
+        setFormData(initialFormData);
+        navigate("/login");*/
       })
       .catch((error) => {
         setErrorMessage(error || "No se pudo registrar el usuario");
@@ -50,9 +54,8 @@ function Register() {
     <section className="register">
       <div className="register__container">
         <div className="register__info">
-          <div className="register__brand">
-            <FaDesktop className="register__brand-icon" />
-
+          <div className="login__brand">
+            <img src="./favicon.png" alt="SGAT" className="login__brand-logo" />
             <div>
               <h1>SGAT</h1>
               <p>Sistema de Gestión de Activos Tecnológicos</p>
@@ -133,6 +136,14 @@ function Register() {
             </p>
           </form>
         </div>
+        {isSuccessModalOpen && (
+          <InfoModal
+            title="Registro exitoso"
+            message="Tu cuenta fue creada correctamente. Ahora puedes iniciar sesión."
+            buttonText="Iniciar sesión"
+            onConfirm={() => navigate("/login")}
+          />
+        )}
       </div>
     </section>
   );

@@ -1,12 +1,21 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaLock, FaUserShield, FaChartBar, FaDesktop } from "react-icons/fa";
+import {
+  FaLock,
+  FaUserShield,
+  FaChartBar,
+  FaEnvelope,
+  FaEye,
+  FaEyeSlash,
+} from "react-icons/fa";
 import EquipmentContext from "../../contexts/EquipmentContext";
 import "./Login.css";
 
 function Login({ onLogin }) {
   const { showToast } = useContext(EquipmentContext);
   const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -49,16 +58,16 @@ function Login({ onLogin }) {
       <div className="login__container">
         <div className="login__info">
           <div className="login__brand">
-            <FaDesktop className="login__brand-icon" />
+            <img
+              src="./favicon.png"
+              alt="SGAT"
+              className="login__brand-logo"
+            />
 
             <div>
               <h1>SGAT</h1>
               <p>Sistema de Gestión de Activos Tecnológicos</p>
             </div>
-          </div>
-
-          <div className="login__illustration">
-            <FaDesktop />
           </div>
 
           <div className="login__features">
@@ -97,27 +106,46 @@ function Login({ onLogin }) {
             <div className="login__group">
               <label>Correo Electrónico</label>
 
-              <input
-                name="email"
-                type="email"
-                placeholder="usuario@empresa.com"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
+              <div className="login__input-wrapper">
+                <FaEnvelope className="login__input-icon" />
+
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="usuario@empresa.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
             </div>
 
             <div className="login__group">
               <label>Contraseña</label>
 
-              <input
-                name="password"
-                type="password"
-                placeholder="****"
-                value={formData.password}
-                onChange={handleChange}
-                required
-              />
+              <div className="login__input-wrapper">
+                <FaLock className="login__input-icon" />
+
+                <input
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="**********"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+
+                <button
+                  type="button"
+                  className="login__password-toggle"
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={
+                    showPassword ? "Ocultar contraseña" : "Mostrar contraseña"
+                  }
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
             </div>
 
             {errorMessage && <p className="login__error">{errorMessage}</p>}

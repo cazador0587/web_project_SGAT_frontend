@@ -12,20 +12,31 @@
 
 .header__brand {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__logo-badge {
+  width: 42px;
+  height: 42px;
 }
 
 .header__logo {
   color: #ffffff;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 800;
   letter-spacing: 1px;
 }
 
+.header__logo-image {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
 .header__subtitle {
   color: #94a3b8;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .header__login {

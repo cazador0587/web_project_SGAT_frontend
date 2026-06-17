@@ -24,8 +24,13 @@ function Header() {
   return (
     <header className="header">
       <div className="header__brand">
-        <div className="header__logo">SGAT</div>
-        <span className="header__subtitle">Gestión de Activos TI</span>
+        <div className="header__logo-badge">
+          <img src="/favicon.png" alt="SGAT" className="header__logo-image" />
+        </div>
+        <div>
+          <div className="header__logo">SGAT</div>
+          <span className="header__subtitle">Gestión de Activos TI</span>
+        </div>
       </div>
 
       {!isLoggedIn ? (
