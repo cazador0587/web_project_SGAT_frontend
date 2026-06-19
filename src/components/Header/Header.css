@@ -12,26 +12,56 @@
 
 .header__brand {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__logo-badge {
+  width: 42px;
+  height: 42px;
 }
 
 .header__logo {
   color: #ffffff;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 800;
   letter-spacing: 1px;
 }
 
+.header__logo-image {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
 .header__subtitle {
   color: #94a3b8;
-  font-size: 13px;
+  font-size: 12px;
+}
+
+.header__login {
+  background: #2563eb;
+  color: white;
+
+  padding: 12px 16px;
+  border-radius: 10px;
+
+  font-weight: 700;
+}
+
+.header__login:hover {
+  background: #1d4ed8;
+}
+
+.header__profile-wrapper {
+  position: relative;
 }
 
 .header__profile {
   display: flex;
   align-items: center;
   gap: 12px;
+
   background: transparent;
   border: none;
   cursor: pointer;
@@ -52,6 +82,10 @@
   font-weight: 700;
 }
 
+.header__profile-info {
+  text-align: left;
+}
+
 .header__user {
   color: white;
   font-size: 14px;
@@ -61,14 +95,6 @@
 .header__role {
   color: #94a3b8;
   font-size: 12px;
-}
-
-.header__profile-wrapper {
-  position: relative;
-}
-
-.header__profile-info {
-  text-align: left;
 }
 
 .header__menu {
@@ -88,19 +114,30 @@
 }
 
 .header__menu-link {
+  width: 100%;
+
   display: block;
+
   color: white;
+  background: transparent;
+  border: none;
+
   padding: 10px 12px;
   border-radius: 8px;
-  font-size: 14px;
-}
 
-.header__menu-link_logout {
-  color: #fca5a5;
+  font-size: 14px;
+  font-family: inherit;
+  text-align: left;
+
+  cursor: pointer;
 }
 
 .header__menu-link:hover {
   background: #334155;
+}
+
+.header__menu-link_logout {
+  color: #fca5a5;
 }
 
 .header__menu-link_logout:hover {

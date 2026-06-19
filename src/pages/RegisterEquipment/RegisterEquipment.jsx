@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaSave, FaTimes } from "react-icons/fa";
 import EquipmentContext from "../../contexts/EquipmentContext";
+import mainApi from "../../utils/MainApi";
 import "./RegisterEquipment.css";
 
 const initialFormData = {
@@ -34,17 +35,23 @@ function RegisterEquipment() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const newEquipment = {
-      id: Date.now(),
-      createdAt: new Date().toISOString(),
-      ...formData,
-    };
+    const token = localStorage.getItem("sgat-token");
 
-    setEquipments((currentEquipments) => [newEquipment, ...currentEquipments]);
-    showToast("Equipo registrado correctamente");
+    mainApi
+      .createEquipment(formData, token)
+      .then((newEquipment) => {
+        setEquipments((currentEquipments) => [
+          newEquipment,
+          ...currentEquipments,
+        ]);
 
-    setFormData(initialFormData);
-    navigate("/inventory");
+        showToast("Equipo registrado correctamente");
+        setFormData(initialFormData);
+        navigate("/inventory");
+      })
+      .catch((error) => {
+        showToast(error || "No se pudo registrar el equipo");
+      });
   };
 
   const handleCancel = () => {

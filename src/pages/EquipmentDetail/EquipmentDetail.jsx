@@ -14,7 +14,7 @@ function EquipmentDetail() {
   const { id } = useParams();
   const { equipments } = useContext(EquipmentContext);
 
-  const equipment = equipments.find((item) => item.id === Number(id));
+  const equipment = equipments.find((item) => item._id === id);
 
   if (!equipment) {
     return (
@@ -47,7 +47,7 @@ function EquipmentDetail() {
 
         <div className="equipment-detail__actions">
           <Link
-            to={`/equipment/${equipment.id}/edit`}
+            to={`/equipment/${equipment._id}/edit`}
             className="equipment-detail__edit"
           >
             <FaEdit />

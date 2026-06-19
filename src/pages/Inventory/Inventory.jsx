@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import EquipmentContext from "../../contexts/EquipmentContext";
 import ConfirmDeleteModal from "../../components/ConfirmDeleteModal/ConfirmDeleteModal";
+import mainApi from "../../utils/MainApi";
 import "./Inventory.css";
 
 function Inventory() {
@@ -29,14 +30,23 @@ function Inventory() {
   };
 
   const confirmDeleteEquipment = () => {
-    setEquipments((currentEquipments) =>
-      currentEquipments.filter(
-        (equipment) => equipment.id !== equipmentToDelete.id,
-      ),
-    );
+    const token = localStorage.getItem("sgat-token");
 
-    setEquipmentToDelete(null);
-    showToast("Equipo eliminado correctamente");
+    mainApi
+      .deleteEquipment(equipmentToDelete._id, token)
+      .then(() => {
+        setEquipments((currentEquipments) =>
+          currentEquipments.filter(
+            (equipment) => equipment._id !== equipmentToDelete._id,
+          ),
+        );
+
+        setEquipmentToDelete(null);
+        showToast("Equipo eliminado correctamente");
+      })
+      .catch((error) => {
+        showToast(error || "No se pudo eliminar el equipo");
+      });
   };
 
   const filteredEquipments = equipments.filter((equipment) => {
@@ -113,9 +123,9 @@ function Inventory() {
         </div>
 
         {filteredEquipments.map((equipment) => (
-          <div key={equipment.id} className="inventory__row">
+          <div key={equipment._id} className="inventory__row">
             <Link
-              to={`/equipment/${equipment.id}`}
+              to={`/equipment/${equipment._id}`}
               className="inventory__equipment-link"
             >
               {equipment.name}
@@ -134,7 +144,7 @@ function Inventory() {
 
             <div className="inventory__actions">
               <Link
-                to={`/equipment/${equipment.id}/edit`}
+                to={`/equipment/${equipment._id}/edit`}
                 className="inventory__edit-btn"
               >
                 <FaEdit />

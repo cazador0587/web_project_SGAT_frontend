@@ -83,8 +83,8 @@ function Dashboard() {
 
           {recentEquipments.map((equipment) => (
             <Link
-              key={equipment.id}
-              to={`/equipment/${equipment.id}`}
+              key={equipment._id}
+              to={`/equipment/${equipment._id}`}
               className="dashboard__equipment"
             >
               <div>

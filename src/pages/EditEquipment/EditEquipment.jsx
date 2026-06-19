@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaSave, FaTimes } from "react-icons/fa";
 import EquipmentContext from "../../contexts/EquipmentContext";
+import mainApi from "../../utils/MainApi";
 import "./EditEquipment.css";
 
 function EditEquipment() {
@@ -9,7 +10,7 @@ function EditEquipment() {
   const navigate = useNavigate();
   const { equipments, setEquipments, showToast } = useContext(EquipmentContext);
 
-  const equipment = equipments.find((item) => item.id === Number(id));
+  const equipment = equipments.find((item) => item._id === id);
 
   const [formData, setFormData] = useState({
     name: equipment?.name || "",
@@ -43,19 +44,23 @@ function EditEquipment() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    setEquipments((currentEquipments) =>
-      currentEquipments.map((item) =>
-        item.id === Number(id)
-          ? {
-              ...item,
-              ...formData,
-            }
-          : item,
-      ),
-    );
+    const token = localStorage.getItem("sgat-token");
 
-    navigate(`/equipment/${id}`);
-    showToast("Equipo actualizado correctamente");
+    mainApi
+      .updateEquipment(id, formData, token)
+      .then((updatedEquipment) => {
+        setEquipments((currentEquipments) =>
+          currentEquipments.map((item) =>
+            item._id === id ? updatedEquipment : item,
+          ),
+        );
+
+        navigate(`/equipment/${id}`);
+        showToast("Equipo actualizado correctamente");
+      })
+      .catch((error) => {
+        showToast(error || "No se pudo actualizar el equipo");
+      });
   };
 
   const handleCancel = () => {

@@ -25,17 +25,6 @@ function Navigation() {
       >
         Inventario
       </NavLink>
-
-      { /* <NavLink
-        to="/register-equipment"
-        className={({ isActive }) =>
-          isActive
-            ? "navigation__link navigation__link_active"
-            : "navigation__link"
-        }
-      >
-        Registrar Equipo
-      </NavLink> */}
     </nav>
   );
 }

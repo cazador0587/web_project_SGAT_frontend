@@ -1,82 +1,86 @@
-# SGAT - Sistema de Gestión de Activos Tecnológicos
+# SGAT Frontend
 
-Aplicación web desarrollada con React para la administración e inventario de activos tecnológicos dentro de una organización.
+## Sistema de Gestión de Activos Tecnológicos (SGAT)
 
-## Descripción
+Aplicación web desarrollada con React para la administración y control de activos tecnológicos dentro de una organización.
 
-SGAT permite registrar, consultar, editar y administrar equipos tecnológicos mediante una interfaz moderna y responsiva.
+## URL de Producción
 
-El proyecto fue desarrollado como parte del programa de Desarrollo Web de TripleTen utilizando React, React Router y Context API.
+https://sgat-fsalvador.mooo.com
 
-## Funcionalidades
+## Funcionalidades Implementadas
 
-- Dashboard con indicadores generales
-- Inventario de equipos
-- Búsqueda de equipos
-- Registro de nuevos equipos
-- Edición de equipos existentes
-- Eliminación de equipos
-- Vista de detalle por equipo
-- Perfil de usuario
-- Inicio de sesión
-- Consumo de API externa mediante fetch
-- Estado global con Context API
-- Navegación mediante React Router
-- Diseño responsive
+### Autenticación
 
-## Tecnologías utilizadas
+* Registro de usuarios.
+* Inicio de sesión.
+* Protección de rutas privadas.
+* Persistencia de sesión mediante JWT.
 
-- React
-- Vite
-- React Router DOM
-- React Icons
-- Context API
-- CSS3
-- JavaScript ES6+
+### Gestión de Equipos
 
-## Estructura del proyecto
+* Registro de equipos tecnológicos.
+* Consulta de inventario.
+* Edición de equipos.
+* Eliminación de equipos.
+* Visualización de detalles.
+* Búsqueda y filtrado de equipos.
 
-```text
-src
-├── assets
-├── components
-├── contexts
-├── data
-├── pages
-├── services
-├── App.jsx
-├── main.jsx
-└── index.css
+### Interfaz de Usuario
+
+* Dashboard principal.
+* Diseño responsive.
+* Navegación protegida.
+* Modales de confirmación.
+* Mensajes de retroalimentación al usuario.
+
+## Tecnologías Utilizadas
+
+* React
+* React Router DOM
+* Context API
+* Vite
+* CSS Modules
+* React Icons
+
+## Variables de Entorno
+
+Archivo `.env.production`
+
+```env
+VITE_API_URL=https://api.sgat-fsalvador.mooo.com
 ```
 
-## Instalación
-
-Clonar repositorio:
+## Instalación Local
 
 ```bash
-git clone URL_DEL_REPOSITORIO
-```
-
-Instalar dependencias:
-
-```bash
+git clone <repositorio>
+cd web_project_SGAT_frontend
 npm install
-```
-
-Ejecutar servidor de desarrollo:
-
-```bash
 npm run dev
 ```
 
-Generar versión de producción:
+## Compilación para Producción
 
 ```bash
 npm run build
 ```
 
+## Mejoras Futuras
+
+El proyecto se encuentra diseñado para permitir la incorporación de nuevos módulos en futuras versiones:
+
+* Gestión de incidencias.
+* Gestión de mantenimientos.
+* Asignación de equipos a usuarios.
+* Reportes avanzados.
+* Exportación a Excel y PDF.
+* Gestión de proveedores.
+* Gestión de licencias de software.
+* Roles y permisos.
+* Bitácora de auditoría.
+* Dashboard con métricas avanzadas.
+
 ## Autor
 
 Fernando Salvador
-
-Proyecto desarrollado para TripleTen.
